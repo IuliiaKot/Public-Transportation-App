@@ -17,7 +17,8 @@ angular.module('myApp.register', ['ngRoute','firebase'])
       if (!$scope.regForm.$invalid) {
           var email = $scope.user.email;
           var password = $scope.user.password;
-          if (email && password) {
+          var password_c = $scope.user.password_c;
+          if (email && password  && password_c) {
               auth.$createUser(email, password)
                   .then(function() {
                       console.log('User creation success');
@@ -30,4 +31,15 @@ angular.module('myApp.register', ['ngRoute','firebase'])
           }
       }
   };
-}]);
+}])
+.directive('validPasswordC', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elm, attrs, ctrl) {
+            ctrl.$parsers.unshift(function (viewValue, $scope) {
+                var noMatch = viewValue != scope.regForm.password.$viewValue
+                ctrl.$setValidity('noMatch', !noMatch)
+            })
+        }
+    }
+})

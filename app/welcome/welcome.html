@@ -11,16 +11,34 @@
 
   <body>
 
-    <div class="blog-masthead">
+    <!-- <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="#/welcome">Home</a>
           <a class="blog-nav-item" href="#/addEvent">Add Event</a>
           <a class="blog-nav-item " style="cursor:pointer;" ng-click="logout();">Logout</a>
         </nav>
-
+        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
       </div>
     </div>
+ -->
+
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="...">
+          </a>
+          <ul class='nav nav-tabs pull-left'>
+            <li><a class="blog-nav-item active" href="#/welcome">Home</a></li>
+            <li><a class="blog-nav-item" href="#/addEvent">Add Event</a></li>
+            <li><a class="blog-nav-item " style="cursor:pointer;" ng-click="logout();">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
    <div class="container">
       <div class="page-header">
         <h1>Meet-Up Event Planner</h1>

@@ -13,8 +13,8 @@
   <body ng-controller="HomeCtrl">
 
     <div class="container">
-      <div class="jumbotron" style="padding-bottom:0px;">
-        <h2>Meet-Up Event Planner</h2>
+      <div class="jumbotron">
+        <h2 class="text-center">Meet-Up Event Planner</h2>
       </div>
       <form class="form-signin" name="signinForm" role="form">
         <div class="form-group" ng-class="{ 'has-error' : signinForm.email.$invalid }">
@@ -30,7 +30,7 @@
         <label class="checkbox">
           <a href="#/register"> Sign Up</a>
         </label>
-          <button ladda-loading="login.loading" data-style="expand-right" ng-disabled="!user.email || !user.password" type="button" ng-click="SignIn($event)" class="btn btn-lg segoe-ui-light ladda-button btn-primary btn-block"><span class="ladda-label">Sign In</span></button>
+        <button ladda-loading="login.loading" data-style="expand-right" ng-disabled="!user.email || !user.password" type="button" ng-click="SignIn($event)" class="btn btn-lg segoe-ui-light ladda-button btn-primary btn-block"><span class="ladda-label">Sign In</span></button>
 
       </form>
 

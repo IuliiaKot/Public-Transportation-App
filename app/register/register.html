@@ -5,12 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>AngularJS & Firebase Web App</title>
+    <title>Meet-Up Event Planner</title>
 
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-
-    <link href="justified-nav.css" rel="stylesheet">
 
 </head>
 
@@ -22,15 +20,20 @@
         </div>
 
         <form class="form-signin" name="regForm">
+
+          <div class="form-group" ng-class="{ 'has-error' : regForm.name.$invalid }">
+            <label>Username</label>
+            <input type="text" name="name" class="form-control" ng-model="user.name" ng-minlength="3" ng-maxlength="8" required>
+            <p ng-show="regForm.name.$error.required && regForm.name.$dirty">required</p>
+            <p ng-show="regForm.name.$error.minlength" class="help-block">Username is too short.</p>
+            <p ng-show="regForm.name.$error.maxlength" class="help-block">Username is too long.</p>
+          </div>
+
           <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" class="form-control" ng-model="user.email" required/>
             <p ng-show="regForm.email.$error.required && regForm.email.$dirty">required</p>
             <p ng-show="!regForm.email.$error.required && regForm.email.$error.email && regForm.email.$dirty">invalid email</p>
-                <br />
-            <!-- <label for="email">Name</label>
-            <input type="text" id="name" name="name" ng-model="formData.name" required/>
-            <p ng-show="myForm.name.$error.required && myForm.name.$dirty">required</p> -->
           </div>
 
           <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
@@ -40,15 +43,10 @@
             <p ng-show="!regForm.password.$error.required && (regForm.password.$error.minlength || regForm.password.$error.maxlength) && regForm.password.$dirty">Passwords must be between 8 and 20 characters.</p>
             <p ng-show="!regForm.password.$error.required && !regForm.password.$error.minlength && !regForm.password.$error.maxlength && regForm.password.$error.pattern && regForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</p>
              <p style="color:red;" ng-show="regError">{{regErrorMessage}}</p>
-          <!-- </div>
-
-          <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }"> -->
-            <label for="password_c">Confirm Password</label>
-            <input type="password" id="password_c" name="password_c" class="form-control" ng-model="user.password_c" valid-password-c required  />
-            <p ng-show="regForm.password_c.$error.required && regForm.password_c.$dirty">Please confirm your password.</p>
-            <p ng-show="!regForm.password_c.$error.required && regForm.password_c.$error.noMatch && regForm.password.$dirty">Passwords do not match.</p>
-        </div>
-
+          </div>
+        <label class="checkbox">
+          <a href="#/home"> Sign In</a>
+        </label>
           <button type="button" ng-click="signUp();" ng-disabled="!regForm.$valid"class="btn btn-lg btn-primary btn-block">Register</button>
       </form>
 

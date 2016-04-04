@@ -11,6 +11,7 @@ angular.module('myApp.welcome', ['ngRoute'])
 
 .controller('WelcomeCtrl', ['$scope','$firebase','CommonProp', function($scope,$firebase,CommonProp) {
   $scope.username = CommonProp.getUser();
+  $scope.name = localStorage.getItem('userName');
   console.log($scope.username)
   if(!$scope.username){
     $location.path('/home');
@@ -26,3 +27,18 @@ angular.module('myApp.welcome', ['ngRoute'])
 
 
 }]);
+
+
+// {
+//   "rules": {
+//     "users": {
+//       "$uid": {
+//         // grants write access to the owner of this user account whose uid must exactly match the key ($uid)
+//         ".write": "auth !== null && auth.uid === $uid",
+//
+//         // grants read access to any user who is logged in with an email and password
+//         ".read": "auth !== null && auth.provider === 'password'"
+//       }
+//     }
+//   }
+// }

@@ -22,6 +22,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
   }
 
   $scope.AddEvent = function(){
+    
     var name = $scope.event.name;
     var type = $scope.event.type;
     var host = $scope.event.host;

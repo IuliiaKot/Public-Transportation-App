@@ -9,18 +9,19 @@ angular.module('myApp.register', ['ngRoute','firebase'])
   });
 }])
 
-.controller('RegisterCtrl', ['$scope','$location','$firebaseAuth', function($scope,$location,$firebaseAuth) {
+.controller('RegisterCtrl', ['$scope','$location','$firebaseAuth',function($scope,$location,$firebaseAuth) {
  	$scope.mesg = 'Hello';
  	var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/");
   var auth = $firebaseAuth(firebaseObj);
   $scope.signUp = function() {
       if (!$scope.regForm.$invalid) {
+          var name = $scope.user.name
           var email = $scope.user.email;
           var password = $scope.user.password;
-          var password_c = $scope.user.password_c;
-          if (email && password  && password_c) {
+          if (email && password && name) {
               auth.$createUser(email, password)
-                  .then(function() {
+                  .then(function(userData) {
+                    localStorage.setItem("userName", name);
                       console.log('User creation success');
                       $location.path('/home');
                   }, function(error) {
@@ -31,15 +32,4 @@ angular.module('myApp.register', ['ngRoute','firebase'])
           }
       }
   };
-}])
-.directive('validPasswordC', function () {
-    return {
-        require: 'ngModel',
-        link: function (scope, elm, attrs, ctrl) {
-            ctrl.$parsers.unshift(function (viewValue, $scope) {
-                var noMatch = viewValue != scope.regForm.password.$viewValue
-                ctrl.$setValidity('noMatch', !noMatch)
-            })
-        }
-    }
-})
+}]);

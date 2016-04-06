@@ -25,7 +25,6 @@ angular.module('myApp.welcome', ['ngRoute'])
     CommonProp.logoutUser();
   }
 
-
 }]);
 
 

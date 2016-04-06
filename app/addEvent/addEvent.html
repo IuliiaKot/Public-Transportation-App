@@ -74,8 +74,16 @@
                   <div class="form-group">
                       <label class="col-md-4 control-label" for="txtDateEnd">End Date/Time*</label>
                       <div class="col-md-4">
-                          <input id="txtHost" name="txtDateEnd" ng-model="event.enddatetime" type="datetime-local" class="form-control input-md">
+                        <input id="txtHost" name="txtDateEnd" ng-model="event.enddatetime" type="datetime-local" class="form-control input-md" min="2012-01-01">
 
+                      </div>
+                  </div>
+
+                  <!-- List of Guests -->
+                  <div class="form-group">
+                      <label class="col-md-4 control-label" for="txtGuests">List of Guests*</label>
+                      <div class="col-md-4">
+                          <input class="form-control" ng-model="event.guests" type="text" placeholder="Sam, Anna" id="txtGuests" name="txtGuests">
                       </div>
                   </div>
 
@@ -83,7 +91,7 @@
                   <div class="form-group">
                       <label class="col-md-4 control-label" for="txtLocation">Event Location*</label>
                       <div class="col-md-4">
-                          <input class="form-control" ng-model="event.location" type="text" placeholder="Event Location/Address" id="txtLocation" name="txtLocation"></textarea>
+                          <input class="form-control" ng-model="event.location" type="text" placeholder="Event Location/Address" id="txtLocation" name="txtLocation">
                       </div>
                   </div>
 
@@ -91,7 +99,7 @@
                   <div class="form-group">
                       <label class="col-md-4 control-label" for="txtMessage">Message(optional)</label>
                       <div class="col-md-4">
-                          <textarea class="form-control" ng-model="event.message" id="txtPost" name="txtMessage"></textarea>
+                          <textarea id="txtMessage" class="form-control" ng-model="event.message" id="txtPost" name="txtMessage"></textarea>
                       </div>
                   </div>
 

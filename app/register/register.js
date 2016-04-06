@@ -12,16 +12,20 @@ angular.module('myApp.register', ['ngRoute','firebase'])
 .controller('RegisterCtrl', ['$scope','$location','$firebaseAuth',function($scope,$location,$firebaseAuth) {
  	$scope.mesg = 'Hello';
  	var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/");
+  var usersRef = new Firebase("https://event-manager-app.firebaseio.com/users");
+
   var auth = $firebaseAuth(firebaseObj);
   $scope.signUp = function() {
       if (!$scope.regForm.$invalid) {
           var name = $scope.user.name
           var email = $scope.user.email;
           var password = $scope.user.password;
+          var employee;
           if (email && password && name) {
               auth.$createUser(email, password)
                   .then(function(userData) {
                     localStorage.setItem("userName", name);
+                    // localStorage.setItem("employee",)
                       console.log('User creation success');
                       $location.path('/home');
                   }, function(error) {
@@ -32,4 +36,19 @@ angular.module('myApp.register', ['ngRoute','firebase'])
           }
       }
   };
-}]);
+}])
+.directive('validateEmail', function() {
+  // ng-pattern doesn't work appropriatly.
+  var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+  return {
+    require: 'ngModel',
+    restrict: '',
+    link: function(scope, elm, attrs, ctrl) {
+      if (ctrl && ctrl.$validators.email) {
+        ctrl.$validators.email = function(modelValue) {
+          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
+        };
+      }
+    }
+  };
+});

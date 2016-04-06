@@ -22,12 +22,13 @@ angular.module('myApp.addEvent', ['ngRoute'])
   }
 
   $scope.AddEvent = function(){
-    
+
     var name = $scope.event.name;
     var type = $scope.event.type;
     var host = $scope.event.host;
     var startdatetime = $scope.event.startdatetime.toString();
     var enddatetime = $scope.event.enddatetime.toString();
+    var guests = $scope.event.guests;
     var location = $scope.event.location;
     var message = $scope.event.message;
     console.log(startdatetime);
@@ -42,6 +43,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             host: host,
             startdatetime: startdatetime,
             enddatetime: enddatetime,
+            guests: guests,
             location: location,
             message: message ? message : "",
             emailID: CommonProp.getUser(),

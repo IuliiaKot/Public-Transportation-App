@@ -23,7 +23,7 @@
 
           <div class="form-group" ng-class="{ 'has-error' : regForm.name.$invalid }">
             <label for="name">Username</label>
-            <input id="name" type="text" name="name" class="form-control" ng-model="user.name" ng-minlength="3" ng-maxlength="8" required>
+            <input id="name" type="text" name="name" class="form-control" ng-model="user.name" ng-minlength="3" ng-maxlength="8" required autofocus>
             <p ng-show="regForm.name.$error.required && regForm.name.$dirty">required</p>
             <p ng-show="regForm.name.$error.minlength" class="help-block">Username is too short.</p>
             <p ng-show="regForm.name.$error.maxlength" class="help-block">Username is too long.</p>

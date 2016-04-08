@@ -11,6 +11,8 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 .controller('AddEventCtrl', ['$scope', '$firebase', '$location', 'CommonProp', function($scope, $firebase, $location, CommonProp) {
 
+  $scope.max = new Date();
+
   if(!CommonProp.getUser()){
     $location.path('/home')
   }

@@ -73,7 +73,7 @@
               <div class="form-group">
                   <label class="col-md-4 control-label" for="txtDateStart">Start Date/Time*</label>
                   <div class="col-md-4">
-                      <input id="txtDateStart" name="txtDateStart" ng-model="event.startdatetime" placeholder="yyyy-MM-ddTHH:mm:ss" type="datetime-local" class="form-control input-md" min="2001-01-01T00:00:00">
+                      <input id="txtDateStart" name="txtDateStart" ng-model="event.startdatetime" ng-attr-min="{{min}}"  type="datetime-local" class="form-control input-md">
 
                   </div>
               </div>
@@ -82,7 +82,7 @@
               <div class="form-group">
                   <label class="col-md-4 control-label" for="txtDateEnd">End Date/Time*</label>
                   <div class="col-md-4">
-                    <input id="txtHost" name="txtDateEnd" ng-model="event.enddatetime" type="datetime-local" class="form-control input-md" min="2012-01-01">
+                    <input id="txtHost" name="txtDateEnd" ng-model="event.enddatetime" type="datetime-local" class="form-control input-md" min="2016-04-04">
 
                   </div>
               </div>

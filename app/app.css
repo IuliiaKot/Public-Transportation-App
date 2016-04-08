@@ -35,3 +35,8 @@ body {
   /*max-width: 640px;*/
   /*width: 54%;*/
 }
+
+
+.red-error {
+  color: red;
+}

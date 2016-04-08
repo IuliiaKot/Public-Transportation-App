@@ -1,3 +1,4 @@
+
 {
   "globalstrict": true,
   "globals": {
@@ -8,6 +9,8 @@
     "beforeEach": false,
     "afterEach": false,
     "module": false,
-    "inject": false
+    "inject": false,
+    "jquery": true
   }
 }
+

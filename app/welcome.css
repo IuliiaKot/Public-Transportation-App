@@ -120,4 +120,16 @@ a.sitename, a:visited.sitename {
   .sitename {
     visibility: hidden;
   }
+
+ul li a{
+  font-size: 14px;
+}
+
+
+}
+
+
+.profile {
+  margin: 0 auto;
+  width: 50%;
 }

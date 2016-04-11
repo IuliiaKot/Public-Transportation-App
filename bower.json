@@ -6,7 +6,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular-password": "^1.0.1"
+    "angular-password": "^1.0.1",
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x"
   },
   "authors": [
     "IuliiaKot <kotlenko.julia@gmail.com>"

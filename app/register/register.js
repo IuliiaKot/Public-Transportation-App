@@ -20,11 +20,12 @@ angular.module('myApp.register', ['ngRoute','firebase'])
           var name = $scope.user.name
           var email = $scope.user.email;
           var password = $scope.user.password;
-          var employee;
+          var jobTitle = $scope.user.jobTitle;
           if (email && password && name) {
               auth.$createUser(email, password)
                   .then(function(userData) {
                     localStorage.setItem("userName", name);
+                    localStorage.setItem("jobTitle", jobTitle);
                     // localStorage.setItem("employee",)
                       console.log('User creation success');
                       $location.path('/home');

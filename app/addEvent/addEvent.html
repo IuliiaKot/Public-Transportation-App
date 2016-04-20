@@ -21,6 +21,7 @@
           <ul class="menu-items">
           <li><a href="#/welcome">Home</a></li>
           <li><a href="#/addEvent">Add Event</a></li>
+          <li><a href="#/profile">Profile</a></li>
           <li><a ng-click="logout();">Logout</a></li>
         </ul>
       </div>
@@ -73,8 +74,8 @@
               <div class="form-group">
                   <label class="col-md-4 control-label" for="txtDateStart">Start Date/Time*</label>
                   <div class="col-md-4">
-                      <input id="txtDateStart" name="txtDateStart" ng-model="event.startdatetime" ng-attr-min="{{min}}"  type="datetime-local" class="form-control input-md">
-
+                    <span id="errEventStartDate" class="error"></span>
+                      <input id="txtDateStart" name="txtDateStart" ng-model="event.startdatetime" type="datetime-local" class="form-control input-md">
                   </div>
               </div>
 
@@ -82,8 +83,8 @@
               <div class="form-group">
                   <label class="col-md-4 control-label" for="txtDateEnd">End Date/Time*</label>
                   <div class="col-md-4">
-                    <input id="txtHost" name="txtDateEnd" ng-model="event.enddatetime" type="datetime-local" class="form-control input-md" min="2016-04-04">
-
+                    <input id="txtDateEnd" name="txtDateEnd" ng-model="event.enddatetime" type="datetime-local" class="form-control input-md"  ng-change='checkDate()'>
+   		                    <span class='red-error'>{{errMessage}}</span>
                   </div>
               </div>
 

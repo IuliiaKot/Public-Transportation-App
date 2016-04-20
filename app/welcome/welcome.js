@@ -12,6 +12,10 @@ angular.module('myApp.welcome', ['ngRoute'])
 .controller('WelcomeCtrl', ['$scope','$firebase','CommonProp', function($scope,$firebase,CommonProp) {
   $scope.username = CommonProp.getUser();
   $scope.name = localStorage.getItem('userName');
+  $scope.jobTitle = localStorage.getItem('jobTitle');
+  $scope.email = localStorage.getItem('email');
+  console.log(localStorage);
+  console.log($scope.username);
   console.log($scope.username)
   if(!$scope.username){
     $location.path('/home');
@@ -23,7 +27,7 @@ angular.module('myApp.welcome', ['ngRoute'])
   $scope.events = sync.$asArray();
   $scope.logout = function(){
     CommonProp.logoutUser();
-  }
+  };
 
 }]);
 

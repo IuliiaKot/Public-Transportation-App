@@ -11,7 +11,6 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 .controller('AddEventCtrl', ['$scope', '$firebase', '$location', 'CommonProp', function($scope, $firebase, $location, CommonProp) {
 
-  $scope.max = new Date();
 
   if(!CommonProp.getUser()){
     $location.path('/home')
@@ -23,13 +22,28 @@ angular.module('myApp.addEvent', ['ngRoute'])
     CommonProp.logoutUser();
   }
 
+
+  $scope.checkDate = function() {
+       console.log($scope.event.startdatetime);
+           $scope.errMessage = '';
+           var curDate = new Date();
+           console.log(curDate);
+           if($scope.event.startdatetime > $scope.event.enddatetime){
+             $scope.errMessage = 'End Date should be greater than start date';
+             return false;
+           }
+           if($scope.event.startdatetime < curDate){
+              $scope.errMessage = 'Start date should not be before today.';
+              return false;
+           }
+       };
   $scope.AddEvent = function(){
 
     var name = $scope.event.name;
     var type = $scope.event.type;
     var host = $scope.event.host;
-    var startdatetime = $scope.event.startdatetime.toString();
-    var enddatetime = $scope.event.enddatetime.toString();
+    var startdatetime = $scope.event.startdatetime;
+    var enddatetime = $scope.event.enddatetime;
     var guests = $scope.event.guests;
     var location = $scope.event.location;
     var message = $scope.event.message;
@@ -43,8 +57,8 @@ angular.module('myApp.addEvent', ['ngRoute'])
     fb.$push({name: name,
             type: type,
             host: host,
-            startdatetime: startdatetime,
-            enddatetime: enddatetime,
+            startdatetime: startdatetime.toString(),
+            enddatetime: enddatetime.toString(),
             guests: guests,
             location: location,
             message: message ? message : "",
@@ -54,7 +68,7 @@ angular.module('myApp.addEvent', ['ngRoute'])
             console.log(ref);
             $location.path('/welcome');
           }, function(error){
-            console.log("error:", error)
+            console.log("error:", error);
           });
     }
 }]);

@@ -11,16 +11,31 @@ angular.module('myApp.addEvent', ['ngRoute'])
 
 .controller('AddEventCtrl', ['$scope', '$firebase', '$location', 'CommonProp', function($scope, $firebase, $location, CommonProp) {
 
-
   if(!CommonProp.getUser()){
-    $location.path('/home')
+    $location.path('/home');
   }
   var login = {};
   $scope.login = login;
 
   $scope.logout = function(){
     CommonProp.logoutUser();
-  }
+
+  };
+
+  $scope.checkDate = function() {
+    console.log($scope.event.startdatetime);
+        $scope.errMessage = '';
+        var curDate = new Date();
+        console.log(curDate);
+        if($scope.event.startdatetime > $scope.event.enddatetime){
+          $scope.errMessage = 'End Date should be greater than start date';
+          return false;
+        }
+        if($scope.event.startdatetime < curDate){
+           $scope.errMessage = 'Start date should not be before today.';
+           return false;
+        }
+    };
 
 
   $scope.checkDate = function() {
@@ -47,12 +62,12 @@ angular.module('myApp.addEvent', ['ngRoute'])
     var guests = $scope.event.guests;
     var location = $scope.event.location;
     var message = $scope.event.message;
-    console.log(startdatetime);
 
     var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/Events");
     var fb = $firebase(firebaseObj);
 
     var user = CommonProp.getUser();
+
 
     fb.$push({name: name,
             type: type,
@@ -70,5 +85,5 @@ angular.module('myApp.addEvent', ['ngRoute'])
           }, function(error){
             console.log("error:", error);
           });
-    }
+    };
 }]);

@@ -33,14 +33,14 @@
             <label for="jobTile">Job title <small>(optional)</small></label>
             <input id="jobTitle" type="text" class="form-control" ng-model="user.jobTitle"   placeholder="Job Title">
 
+
           </div>
 
           <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
             <label for="email">Email</label>
             <input type='email' name='email' id='email' class="form-control" validate-email ng-model='user.email' required>
-                <!-- <input type="email" id="email" name="email" class="form-control"  ng-model="user.email" required/> -->
-            <p ng-show="regForm.email.$error.required && regForm.email.$dirty">required</p>
-            <p ng-show="!regForm.email.$error.required && regForm.email.$error.email && regForm.email.$dirty">invalid email</p>
+            <p ng-show="regForm.email.$error.required && regForm.email.$dirty">Required</p>
+            <p ng-show="!regForm.email.$error.required && regForm.email.$error.email && regForm.email.$dirty">Enter a valid email.</p>
           </div>
 
           <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">

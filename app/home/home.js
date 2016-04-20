@@ -38,8 +38,23 @@ angular.module('myApp.home', ['ngRoute','firebase'])
             login.loading = false;
             console.log('Authentication failure');
         });
-}
+};
 }])
+.directive('validateEmail', function() {
+  // ng-pattern doesn't work appropriatly.
+  var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+  return {
+    require: 'ngModel',
+    restrict: '',
+    link: function(scope, elm, attrs, ctrl) {
+      if (ctrl && ctrl.$validators.email) {
+        ctrl.$validators.email = function(modelValue) {
+          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
+        };
+      }
+    }
+  };
+})
 .service('CommonProp', ['$location','$firebaseAuth', function($location, $firebaseAuth) {
     var user = '';
     var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/Events");
@@ -47,7 +62,7 @@ angular.module('myApp.home', ['ngRoute','firebase'])
 
     return {
         getUser: function() {
-          if(user == ''){
+          if(user === ''){
             console.log(user);
             user = localStorage.getItem('userEmail');
           }
@@ -99,3 +114,4 @@ angular.module('myApp.home', ['ngRoute','firebase'])
     }
   };
 });
+}]);

@@ -17,7 +17,7 @@ angular.module('myApp.register', ['ngRoute','firebase'])
   var auth = $firebaseAuth(firebaseObj);
   $scope.signUp = function() {
       if (!$scope.regForm.$invalid) {
-          var name = $scope.user.name
+          var name = $scope.user.name;
           var email = $scope.user.email;
           var password = $scope.user.password;
           var jobTitle = $scope.user.jobTitle;
@@ -26,7 +26,7 @@ angular.module('myApp.register', ['ngRoute','firebase'])
                   .then(function(userData) {
                     localStorage.setItem("userName", name);
                     localStorage.setItem("jobTitle", jobTitle);
-                    // localStorage.setItem("employee",)
+
                       console.log('User creation success');
                       $location.path('/home');
                   }, function(error) {

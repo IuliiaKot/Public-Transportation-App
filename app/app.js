@@ -5,7 +5,8 @@ angular.module('myApp', [
     'myApp.home',
     'myApp.register',
     'myApp.welcome',
-    'myApp.addEvent'
+    'myApp.addEvent',
+    'myApp.profile'
 ]).
 config(['$routeProvider', function($routeProvider) {
     // Set defualt view of our app to home

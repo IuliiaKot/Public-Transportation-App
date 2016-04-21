@@ -114,4 +114,3 @@ angular.module('myApp.home', ['ngRoute','firebase'])
     }
   };
 });
-}]);

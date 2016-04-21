@@ -80,4 +80,37 @@ angular.module('myApp.home', ['ngRoute','firebase'])
           $location.path('/home');
         }
     };
-}]);
+}])
+.directive('laddaLoading', [
+    function() {
+        return {
+            link: function(scope, element, attrs) {
+                var Ladda = window.Ladda;
+                var ladda = Ladda.create(element[0]);
+                scope.$watch(attrs.laddaLoading, function(newVal, oldVal) {
+                    // Based on the value start and stop the indicator
+                    if (newVal) {
+                        ladda.start();
+                    } else {
+                        ladda.stop();
+                    }
+                });
+            }
+        };
+    }
+])
+.directive('validateEmail', function() {
+  // ng-pattern doesn't work appropriatly.
+  var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+  return {
+    require: 'ngModel',
+    restrict: '',
+    link: function(scope, elm, attrs, ctrl) {
+      if (ctrl && ctrl.$validators.email) {
+        ctrl.$validators.email = function(modelValue) {
+          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
+        };
+      }
+    }
+  };
+});

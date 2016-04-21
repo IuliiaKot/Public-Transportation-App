@@ -37,6 +37,21 @@ angular.module('myApp.addEvent', ['ngRoute'])
         }
     };
 
+
+  $scope.checkDate = function() {
+       console.log($scope.event.startdatetime);
+           $scope.errMessage = '';
+           var curDate = new Date();
+           console.log(curDate);
+           if($scope.event.startdatetime > $scope.event.enddatetime){
+             $scope.errMessage = 'End Date should be greater than start date';
+             return false;
+           }
+           if($scope.event.startdatetime < curDate){
+              $scope.errMessage = 'Start date should not be before today.';
+              return false;
+           }
+       };
   $scope.AddEvent = function(){
 
     var name = $scope.event.name;

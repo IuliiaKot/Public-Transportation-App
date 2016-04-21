@@ -73,7 +73,7 @@
               <div class="form-group">
                   <label class="col-md-4 control-label" for="txtDateStart">Start Date/Time*</label>
                   <div class="col-md-4">
-                     <span id="errEventStartDate" class="error"></span>
+                    <span id="errEventStartDate" class="error"></span>
                       <input id="txtDateStart" name="txtDateStart" ng-model="event.startdatetime" type="datetime-local" class="form-control input-md">
 
                   </div>
@@ -84,7 +84,8 @@
                   <label class="col-md-4 control-label" for="txtDateEnd">End Date/Time*</label>
                   <div class="col-md-4">
                     <input id="txtDateEnd" name="txtDateEnd" ng-model="event.enddatetime" type="datetime-local" class="form-control input-md"  ng-change='checkDate()'>
-                    <span class='red-error'>{{errMessage}}</span>
+   		                    <span class='red-error'>{{errMessage}}</span>
+
                   </div>
 
               </div>

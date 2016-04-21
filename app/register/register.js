@@ -26,6 +26,7 @@ angular.module('myApp.register', ['ngRoute','firebase'])
                   .then(function(userData) {
                     localStorage.setItem("userName", name);
                     localStorage.setItem("jobTitle", jobTitle);
+
                       console.log('User creation success');
                       $location.path('/home');
                   }, function(error) {
@@ -51,4 +52,14 @@ angular.module('myApp.register', ['ngRoute','firebase'])
       }
     }
   };
-});
+})
+.directive('autofocus', ['$timeout', function($timeout) {
+  return {
+    restrict: 'A',
+    link : function($scope, $element) {
+      $timeout(function() {
+        $element[0].focus();
+      });
+    }
+  }
+}]);

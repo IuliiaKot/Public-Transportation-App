@@ -16,6 +16,7 @@ angular.module('myApp.welcome', ['ngRoute'])
   $scope.email = localStorage.getItem('email');
   console.log(localStorage);
   console.log($scope.username);
+
   if(!$scope.username){
     $location.path('/home');
   }

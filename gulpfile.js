@@ -71,7 +71,7 @@ gulp.task('default',
 );
 gulp.task('build', function() {
   runSequence(
-    ['clean'],
-    ['minify-css', 'minify-js', 'copy-html-files', 'copy-bower-components', 'connectDist']
+    
+    ['clean','minify-css', 'minify-js', 'copy-html-files', 'copy-bower-components', 'connectDist']
   );
 });

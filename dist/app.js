@@ -1,1 +1,0 @@
-"use strict";angular.module("myApp",["ngRoute","myApp.home","myApp.register","myApp.welcome","myApp.addEvent","myApp.profile"]).config(["$routeProvider",function(e){e.otherwise({redirectTo:"/home"})}]);

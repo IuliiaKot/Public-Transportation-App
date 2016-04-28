@@ -8,23 +8,6 @@ var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 
-
-//
-// gulp.task('connect', function () {
-//   connect.server({
-//     root: 'app/',
-//     port: 8888
-//   });
-// });
-//
-//
-// tasks
-// gulp.task('lint', function() {
-//   gulp.src(['./app/**/*.js', '!./app/bower_components/**'])
-//     .pipe(jshint())
-//     .pipe(jshint.reporter('default'))
-//     .pipe(jshint.reporter('fail'));
-// });
 gulp.task('clean', function() {
     gulp.src('./dist/*')
       .pipe(clean({force: true}));
@@ -67,11 +50,11 @@ gulp.task('connectDist', function () {
 
 // default task
 gulp.task('default',
-  ['lint', 'connect']
+  ['connect']
 );
 gulp.task('build', function() {
   runSequence(
-    
+
     ['clean','minify-css', 'minify-js', 'copy-html-files', 'copy-bower-components', 'connectDist']
   );
 });

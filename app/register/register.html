@@ -19,7 +19,7 @@
             <h2 class="text-center">Meet-Up Event Planner</h2>
         </div>
 
-        <form class="form-signin" novalidate name="regForm">
+        <form class="form-signin"  name="regForm">
 
           <div class="form-group" ng-class="{ 'has-error' : regForm.name.$invalid }">
             <label for="name">Username</label>
@@ -39,12 +39,13 @@
           <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
             <label for="email">Email</label>
             <input type='email' name='email' id='email' class="form-control" ng-pattern="EMAIL_REGEXP" ng-model='user.email' required >
-            <p ng-show="regForm.email.$error.required && regForm.email.$dirty">Required</p>
-            <p ng-show="!regForm.email.$error.required && regForm.email.$error.email && regForm.email.$dirty">Enter a valid email.</p>
-
+            <!-- <p ng-show="regForm.email.$error.required && regForm.email.$dirty">Required</p>
+            <p ng-show="regForm.email.$error.email && regForm.email.$dirty">Enter a valid email.</p> -->
+            <!-- <p ng-show="regForm.email.$invalid">Enter a valid email.</p> -->
+            <p class="help-block" ng-show="regForm.email.$error.pattern">Enter a valid email</p>
           </div>
 
-          <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
+          <div class="form-group" ng-class="{ 'has-error' : regForm.password .$invalid }">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" class="form-control" ng-model="user.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required  />
             <p ng-show="regForm.password.$error.required && regForm.password.$dirty">required</p>

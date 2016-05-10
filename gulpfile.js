@@ -52,6 +52,7 @@ gulp.task('connectDist', function () {
 gulp.task('default',
   ['connect']
 );
+
 gulp.task('build', function() {
   runSequence(
 

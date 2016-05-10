@@ -14,6 +14,8 @@ angular.module('myApp.register', ['ngRoute','firebase'])
  	var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/");
   var usersRef = new Firebase("https://event-manager-app.firebaseio.com/users");
 
+  $scope.EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i;
+
   var auth = $firebaseAuth(firebaseObj);
   $scope.signUp = function() {
       if (!$scope.regForm.$invalid) {
@@ -38,21 +40,28 @@ angular.module('myApp.register', ['ngRoute','firebase'])
       }
   };
 }])
-.directive('validateEmail', function() {
-  // ng-pattern doesn't work appropriatly.
-  var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-  return {
-    require: 'ngModel',
-    restrict: '',
-    link: function(scope, elm, attrs, ctrl) {
-      if (ctrl && ctrl.$validators.email) {
-        ctrl.$validators.email = function(modelValue) {
-          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
-        };
-      }
-    }
-  };
-})
+// .directive('validateEmail', function() {
+//   return {
+//     restrict: 'A',
+//     require: 'ngModel',
+//     link: function(scope, elm, attrs, model) {
+//       //change this:
+//       var EMAIL_REGEXP =  /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+//       var emailValidator = function(value) {
+//       if (!value || EMAIL_REGEXP.test(value)) {
+//         model.$setValidity('email', true);
+//         return value;
+//       } else {
+//         model.$setValidity('email', false);
+//         return undefined;
+//       }
+//       model.$parsers.push(emailValidator);
+//       model.$formatters.push(emailValidator);
+//     }
+//   }
+// }
+// })
+
 .directive('autofocus', ['$timeout', function($timeout) {
   return {
     restrict: 'A',

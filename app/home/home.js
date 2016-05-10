@@ -13,6 +13,7 @@ angular.module('myApp.home', ['ngRoute','firebase'])
 
   var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/");
   var loginObj = $firebaseAuth(firebaseObj);
+  $scope.EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i;
 
   var login = {};
   $scope.login = login;
@@ -40,21 +41,6 @@ angular.module('myApp.home', ['ngRoute','firebase'])
         });
 };
 }])
-.directive('validateEmail', function() {
-  // ng-pattern doesn't work appropriatly.
-  var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-  return {
-    require: 'ngModel',
-    restrict: '',
-    link: function(scope, elm, attrs, ctrl) {
-      if (ctrl && ctrl.$validators.email) {
-        ctrl.$validators.email = function(modelValue) {
-          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
-        };
-      }
-    }
-  };
-})
 .service('CommonProp', ['$location','$firebaseAuth', function($location, $firebaseAuth) {
     var user = '';
     var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/Events");
@@ -80,37 +66,19 @@ angular.module('myApp.home', ['ngRoute','firebase'])
           $location.path('/home');
         }
     };
-}])
-.directive('laddaLoading', [
-    function() {
-        return {
-            link: function(scope, element, attrs) {
-                var Ladda = window.Ladda;
-                var ladda = Ladda.create(element[0]);
-                scope.$watch(attrs.laddaLoading, function(newVal, oldVal) {
-                    // Based on the value start and stop the indicator
-                    if (newVal) {
-                        ladda.start();
-                    } else {
-                        ladda.stop();
-                    }
-                });
-            }
-        };
-    }
-])
-.directive('validateEmail', function() {
-  // ng-pattern doesn't work appropriatly.
-  var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-  return {
-    require: 'ngModel',
-    restrict: '',
-    link: function(scope, elm, attrs, ctrl) {
-      if (ctrl && ctrl.$validators.email) {
-        ctrl.$validators.email = function(modelValue) {
-          return ctrl.$isEmpty(modelValue) || EMAIL_REGEXP.test(modelValue);
-        };
-      }
-    }
-  };
-});
+}]);
+// .directive('valid', function() {
+//   var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+//   return {
+//     link: function(scope, elm) {
+//       elm.on("keyup",function(){
+//             var isMatchRegex = EMAIL_REGEXP.test(elm.val());
+//             if( isMatchRegex&& elm.hasClass('warning') || elm.val() == ''){
+//               elm.removeClass('warning');
+//             }else if(isMatchRegex == false && !elm.hasClass('warning')){
+//               elm.addClass('warning');
+//             }
+//       });
+//     }
+//   }
+// });

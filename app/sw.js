@@ -4,7 +4,7 @@ var urlsToCache = [
     '/index.html',
     '/app.css',
     '/app.js',
-    '/data/test.json',
+    '/data/stations.json',
     '/home/home.html',
     '/home/home.js',
     '/bower_components/angular/angular.js',
@@ -12,15 +12,13 @@ var urlsToCache = [
 ];
 
 
-/*cache array, used for checking if cache should be removed, in case of changing cache version*/
 var allCaches = [
     CACHE_NAME
 ];
 
 
 /*install listener, initiates storing locally static cache*/
-self.addEventListener('install', function(event) {
-    // Perform install steps
+self.addEventListener('install', function(event) {    // Perform install steps
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then(function(cache) {
@@ -35,7 +33,7 @@ self.addEventListener('activate',  function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('d')
+  console.log(event.request.url)
   event.respondWith(
     caches.match(event.request).then(function(response) {
       return response || fetch(event.request);

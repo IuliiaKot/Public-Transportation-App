@@ -1,1 +1,1 @@
-"use strict";describe("myApp.version module",function(){beforeEach(module("myApp.version")),describe("version service",function(){it("should return current version",inject(function(e){expect(e).toEqual("0.1")}))})});
+"use strict";describe("transitApp.version module",function(){beforeEach(module("transitApp.version")),describe("version service",function(){it("should return current version",inject(function(e){expect(e).toEqual("0.1")}))})});

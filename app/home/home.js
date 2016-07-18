@@ -14,7 +14,7 @@ angular.module('transitApp.home', ['ngRoute'])
 
   function getStations(){
     return new Promise(function(resolve, reject){
-      $http.get('../data/test.json').success(function(data){
+      $http.get('../data/stations.json').success(function(data){
         resolve(data)
       });
     });

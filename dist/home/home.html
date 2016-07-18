@@ -2,7 +2,7 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
-    <title>Meet-Up Event Planner</title>
+    <title>Transit App</title>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
@@ -15,15 +15,15 @@
 
   <body ng-controller="HomeCtrl">
     <div class="header text-center">
-      Transit App Hello
+      Transit App
     </div>
 
-    <div class="container">
+    <div class="container text-center">
 
     <!-- <div class="col-md-6"> -->
       <div class="form-inline">
         <div class="form-group">
-            <label class="sr-only" for="from">From</label>
+            <label class="visible-md-block hidden-md" for="from">From</label>
             <!-- <input type="text" class="col-md-6 form-control" placeholder="From Station"> -->
             <select class="from-station col-md-6 form-control" name="" ng-model="stationsValue1" ng-options="station['Station Name'] for station in stations">
               <option value="{{station['Station Name']}}">Hello</option>
@@ -31,16 +31,20 @@
         </div>
         <div class="form-group">
 
-            <label class="sr-only" for="to">To</label>
+            <label class="visible-md-block hidden-md" for="to">To</label>
             <!-- <input type="text" class="col-md-6 form-control" placeholder="To Station"> -->
             <select class="to-station col-md-6 form-control" name="" ng-model="stationsValue2" ng-options="station['Station Name'] for station in stations">
               <option value="{{station['Station Name']}}">Hello</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-lg btn-block btn-primary" ng-click='findStops()'>Find</button>
+        <button type="submit" class="btn btn-my btn-primary" ng-click='findStops()'>Find</button>
       </div>
     <!-- </div> -->
+
     </div>
+
+
+
 
 
 

@@ -25,3 +25,7 @@ select option{
     width: 60%;
   }
 }
+
+@media all and (max-width:1200px) {
+   .btn-my { width: 100%; display:inline-block; }
+}

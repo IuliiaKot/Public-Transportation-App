@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.home', ['ngRoute','firebase'])
+angular.module('transitApp.home', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {
@@ -9,76 +9,60 @@ angular.module('myApp.home', ['ngRoute','firebase'])
   });
 }])
 
-.controller('HomeCtrl', ['$scope','$location','CommonProp','$firebaseAuth',function($scope,$location,CommonProp,$firebaseAuth) {
+.controller('HomeCtrl', ['$scope','$http',function($scope,$http) {
+  $scope.name = "julia";
 
-  var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/");
-  var loginObj = $firebaseAuth(firebaseObj);
-  $scope.EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/i;
+  function getStations(){
+    return new Promise(function(resolve, reject){
+      $http.get('../data/test.json').success(function(data){
+        resolve(data)
+      });
+    });
+  };
 
-  var login = {};
-  $scope.login = login;
 
-  $scope.user = {};
-  $scope.SignIn = function(e) {
-    e.preventDefault();
-    var username = $scope.user.email;
-    var password = $scope.user.password;
-    login.loading = true;
-    loginObj.$authWithPassword({
-            email: username,
-            password: password
-        })
-        .then(function(user) {
-            //Success callback
-            console.log('Authentication successful');
-            login.loading = false;
-	          CommonProp.setUser(user.password.email);
-		        $location.path('/welcome');
-        }, function(error) {
-            //Failure callback
-            login.loading = false;
-            console.log('Authentication failure');
-        });
-};
-}])
-.service('CommonProp', ['$location','$firebaseAuth', function($location, $firebaseAuth) {
-    var user = '';
-    var firebaseObj = new Firebase("https://event-manager-app.firebaseio.com/Events");
-    var loginObj = $firebaseAuth(firebaseObj);
+    getStations().then(function(data){
+      console.log(data[0]['Station Name'])
+      $scope.stations = data;
+      $scope.$apply();
+  })
 
-    return {
-        getUser: function() {
-          if(user === ''){
-            console.log(user);
-            user = localStorage.getItem('userEmail');
+
+
+
+  function get(url) {
+      return new Promise(function(resolve, reject) {
+        $.getJSON(url)
+          .done(function(json){
+            resolve(json)
+          })
+          .fail(function(xhr, status, err){
+            reject(status + err.message);
+          })
+      })
+    }
+
+    $scope.findStops = function(){
+      // from station
+
+      var req1 = $scope.stationsValue1['Station Name'];
+      // to station
+      var req2 = $scope.stationsValue2['Station Name']
+      get('http://www3.septa.org/hackathon/NextToArrive/?req1='+req1+'&req2='+req2+'&req3=5&callback=?')
+        .then(function(result){
+          if (result.length != 0) {
+            $scope.header = ['Train#', 'Line', 'Departs', 'Arrives', 'Connect At', 'Status']
+            $scope.allStops = result;
+            $scope.from = req1;
+            $scope.to = req2;
+            console.log(result)
           }
-          return user;
-        },
-        setUser: function(value) {
-          localStorage.setItem("userEmail", value);
-          user = value;
-        },
-        logoutUser:function(){
-          loginObj.$unauth();
-          user = '';
-          localStorage.clear();
-          console.log('done logout');
-          $location.path('/home');
-        }
-    };
-}]);
-// .directive('valid', function() {
-//   var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-//   return {
-//     link: function(scope, elm) {
-//       elm.on("keyup",function(){
-//             var isMatchRegex = EMAIL_REGEXP.test(elm.val());
-//             if( isMatchRegex&& elm.hasClass('warning') || elm.val() == ''){
-//               elm.removeClass('warning');
-//             }else if(isMatchRegex == false && !elm.hasClass('warning')){
-//               elm.addClass('warning');
-//             }
-//       });
-//     }
-//   }
-// });
+          else {
+            // debugger
+            $scope.message = "There are not trains between this stations"
+          }
+          $scope.$apply();
+        })
+    }
+
+}])

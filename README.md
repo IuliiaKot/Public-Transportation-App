@@ -8,6 +8,6 @@ You will build an application that allows users to select a departure and arriva
 
 ### Run app
   1. clone on local machine
-  2. run 'npm install'
-  3. run 'gulp clean'
-  4. run 'gulp build'
+  2. run `npm install`
+  3. run `gulp clean`
+  4. run `gulp build`

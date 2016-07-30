@@ -58,7 +58,7 @@ angular.module('transitApp.home', ['ngRoute'])
             console.log(result)
           }
           else {
-            // debugger
+
             $scope.message = "There are not trains between this stations"
           }
           $scope.$apply();

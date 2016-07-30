@@ -17,8 +17,7 @@ var allCaches = [
 ];
 
 
-/*install listener, initiates storing locally static cache*/
-self.addEventListener('install', function(event) {    // Perform install steps
+self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(CACHE_NAME)
         .then(function(cache) {

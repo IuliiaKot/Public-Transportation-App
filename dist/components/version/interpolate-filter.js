@@ -1,1 +1,0 @@
-"use strict";angular.module("transitApp.version.interpolate-filter",[]).filter("interpolate",["version",function(r){return function(t){return String(t).replace(/\%VERSION\%/gm,r)}}]);

@@ -28,8 +28,6 @@ angular.module('transitApp.home', ['ngRoute'])
   })
 
 
-
-
   function get(url) {
       return new Promise(function(resolve, reject) {
         $.getJSON(url)
@@ -51,15 +49,18 @@ angular.module('transitApp.home', ['ngRoute'])
       get('http://www3.septa.org/hackathon/NextToArrive/?req1='+req1+'&req2='+req2+'&req3=5&callback=?')
         .then(function(result){
           if (result.length != 0) {
-            $scope.header = ['Train#', 'Line', 'Departs', 'Arrives', 'Connect At', 'Status']
+            $scope.message = '';
+            $scope.header = ['Train#', 'Line', 'Departs', 'Arrives', 'Connect At', 'Status'];
             $scope.allStops = result;
             $scope.from = req1;
             $scope.to = req2;
             console.log(result)
           }
           else {
-
-            $scope.message = "There are not trains between this stations"
+            $scope.allStops = ""
+            $scope.from = ""
+            $scope.to = ""
+            $scope.message = "There are not trains between this stations";
           }
           $scope.$apply();
         })

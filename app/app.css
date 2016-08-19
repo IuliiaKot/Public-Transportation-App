@@ -27,5 +27,13 @@ select option{
 }
 
 @media all and (max-width:1200px) {
+  .msg {
+    font-size: 22px;
+  }
    .btn-my { width: 100%; display:inline-block; }
+}
+
+
+.msg {
+  font-size: 18px;
 }

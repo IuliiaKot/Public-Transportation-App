@@ -8,10 +8,6 @@
     "Station Name": "49th St"
   },
   {
-    "Station_ID": 90539,
-    "Station Name": "9th St"
-  },
-  {
     "Station_ID": 90404,
     "Station Name": "Airport Terminal A"
   },
@@ -52,10 +48,6 @@
     "Station Name": "Ardsley"
   },
   {
-    "Station_ID": 90002,
-    "Station Name": "Bala"
-  },
-  {
     "Station_ID": 90508,
     "Station Name": "Berwyn"
   },
@@ -94,14 +86,6 @@
   {
     "Station_ID": 90207,
     "Station Name": "Chester TC"
-  },
-  {
-    "Station_ID": 90720,
-    "Station Name": "Chestnut Hill East"
-  },
-  {
-    "Station_ID": 90801,
-    "Station Name": "Chestnut Hill West"
   },
   {
     "Station_ID": 90204,
@@ -190,10 +174,6 @@
   {
     "Station_ID": 90228,
     "Station Name": "Elm St"
-  },
-  {
-    "Station_ID": 90301,
-    "Station Name": "Elwyn Station"
   },
   {
     "Station_ID": 90504,
@@ -312,10 +292,6 @@
     "Station Name": "Malvern"
   },
   {
-    "Station_ID": 90221,
-    "Station Name": "Manayunk East"
-  },
-  {
     "Station_ID": 90205,
     "Station Name": "Marcus Hook"
   },
@@ -326,10 +302,6 @@
   {
     "Station_ID": 90317,
     "Station Name": "Meadowbrook"
-  },
-  {
-    "Station_ID": 90302,
-    "Station Name": "Media"
   },
   {
     "Station_ID": 90408,
@@ -532,10 +504,6 @@
     "Station Name": "University City"
   },
   {
-    "Station_ID": 90806,
-    "Station Name": "Upsal"
-  },
-  {
     "Station_ID": 90514,
     "Station Name": "Villanova"
   },
@@ -572,10 +540,6 @@
     "Station Name": "Willow Grove"
   },
   {
-    "Station_ID": 90203,
-    "Station Name": "Wilmington"
-  },
-  {
     "Station_ID": 90220,
     "Station Name": "Wissahickon"
   },
@@ -590,10 +554,6 @@
   {
     "Station_ID": 90718,
     "Station Name": "Wyndmoor"
-  },
-  {
-    "Station_ID": 90003,
-    "Station Name": "Wynnefield Avenue"
   },
   {
     "Station_ID": 90519,
